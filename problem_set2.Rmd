@@ -1,0 +1,183 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+  ---
+  title: "STA304_PS2"
+  author: "Guanhao Cao,April Ding,Xiaomeng Liu,Jingyi Zhang"
+  due date: "2020/10/19""
+  output: pdf_document:
+          latex_engine:xelatex
+  ---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+#install.packages("magrittr") 
+#install.packages("dplyr")
+#install.packages("kableExtra")
+library(magrittr)
+library(dplyr) 
+library(ggplot2)
+library(knitr)
+```
+
+## How Different Factors Influences the Number of Children in Canada Households
+
+# Name(s) of Author(s) 
+Guanhao Cao 1002907312
+Meiwen Ding 1005119863
+Xiaomeng Liu 1004900048;
+Jingyi Zhang1005087870
+
+# 2020/10/19
+
+## Abstract
+
+In this study, we use the Canadian GSS 2017 dataset(collected via computer assisted telephone interviews (CATI) to study how different factors would affect the number of children within a Canadian household. We found that there are strong evidences showing there exists a linear relationship between the total number of children and two groups of independent variables(namely parent’s age when first giving birth and number of marriage of parent). The study also finds out the number of children also relates to regions and education level. Finally, we count the number of people with intentions to have different number of children to generate predict people’s willingness of giving birth. Canada is a country with low population density and high job vacancies, which makes this study essential and meaningful as Canada’s economy could develop drastically if the population increases at a significant rate.
+
+
+## Introduction
+
+Canada is the country that has the second largest territory. However, the population density is only 4 people per square kilometres, which ranked at 228th ((Canada Population 2020 (Live)) most densely country all around the world. Although a large percentage of Canada territory has harsh weather and therefore is quite harsh to develop economy or even have inhabitant, the economy of Canada is still facing labour force shortage. Moreover, as Canada is a developed country, the medical service and welfare system is so excellent that not only the life expectancy is quite high but also the fertility rate is extremely low. These various reasons contribute to the unbalanced population structure, which leans quite heavily on the end of elderly people. Therefore, Canada is always a country that encourages fertility. Canada has a steady increase birth rate of around 2% but the acceleration of population still could not meet the demand of labour force for Canada economy. Therefore, it is quite meaningful and important to study what are the factors that would affect the number of children in a Canada household. By analysing these influential factors, we could propose some feasible solutions to boost the population growth. After the introduction part, we would like to introduce the information of the dataset we use. Then, we would generally analyse the data from the GSS dataset and propose the hypothetical relationship between the total number of children within a household and some influential factors. After the modelling part, we would present as well as interpret the results and discuss possible reasons and solutions to these results. After discussing the results to arrive a convincing conclusion, we would also criticise our study to find weakness and next step improvements of our study.
+
+
+
+## Data
+
+The dataset used in our study was obtained from the Canadian General Social Survey (GSS) stored in the U of T online library. Stratified sampling method was used in collection of the data. Specifically, each stratum was a small geographic area and multiple strata were sampled, with respect to the provinces. There were a total of 27 strata. The population of this dataset is people who are, and older than 15 years old in Canada in 2017, with the exception of residents in the Yukon territory, Northwest territory, and Nunavut. The frame of this survey is drawn from lists of all accessible telephone numbers in use and validate addresses in the ten provinces from Statistics Canada. A simple random sample without replacement of each record was used in each stratum. Households without a phone number were excluded from the sample. Computer assisted telephone interviews (CATI) was used to contact respondents. Interviewers were trained who attempted to contact the randomly selected responding household. Those who at first refused to participate were re-contacted up to two more times. For cases where the respondent wasn’t in a proper space or time to talk, the interviewer would set up an appointment to call back at another picked time. When there was no one home, attempted numbers of call backs were made. Overall, 91.8% were reachable through phone calls, and the total respond rate was 51.4%, according to Public Use Microdata File Documentation and User’s Guide. The use of stratified sampling in some ways reduce the validity of the survey because the demography of the Canadian population cannot be perfectly divided into strata, we cannot ensure that each stratum is completely homogenous from within. Variables used in our study include age at first birth, total number of children, and number of marriages, education level of the parents, parents’ gender, and intended number of children. Education level and gender are categorical variables while others are numerical. Inevitably, the dataset contains many outliers and missing values due to the nature of the survey.
+
+
+
+## Model
+
+$$
+y_i = \beta_0 + \beta_1 x_{k} + e_{i}
+$$
+
+
+It is widely accepted that Canada is an underpopulated country as it ranked the 228th most densely populated country(4 people/square kilometres) in the world. We are interested in the factors affecting the number of children per household because we believe that increasing in population would have significant meaning in Canada economic development. The data in this dataset is collected using stratified sampling because there are too many households in Canada.  Stratified sampling refers to the sampling process that divides bigger population into smaller proportions and in this survey Canada is divided into 10 provinces and divides each province into smaller unit for the convenience to collect raw data. 
+
+After the stratified sampling, we observe the dataset and notice that there seems to exist a relationship between total number of children and two groups of quantitative variables, namely age at first birth and number of marriages. My hypothesis is that the relationship between these two groups of variables are linear in this dataset. 
+yi = β0 + β1xk 
+By definition, linear regression is the statistic model that uses linear approach to simulate a relationship between the dependent and independent variables. In this model, yi is the dependent variable, which is the number of total children in the respondent’s family in this case and xi is the independent variable, which is age at first birth and number of marriage respectively in this case. B0 and B1 are two constants that describe the relationship between yi and xi and these two variables are what we desired. We choose total children as the dependent variable because the number of children a household has is an important indicator for domestic population. We choose age at first birth instead of average age of giving birth because the variation of using average age of giving birth is much higher than the variation of using age at the first birth. This is because that the time interval between giving births to different children are more random and uncertain compared to the age period of giving birth to the first child.
+
+This linear hypothesis is made based on common sense as the later you have first children, the lower the likelihood you will have other children in the future because the physical requirements of giving birth prohibit most cases of having children after 35. Also, it makes sense that the number of children you will give birth to would increase with the number of marriage you have.
+Then we compare linear models with other statistic models to find if there is a better choice. Logistic regression is not suitable in this case because the desirable relationship is between two quantitive variables instead of desiring a binary response variable. We do not apply Bayesian modelling because it would decrease the uncertainty and deviation. The number of children, age at first birth and number of marriage are all variables that would not have huge variation as almost every data point of these three variables are below 50. After analysing the linearity between total number of children and two independent variables, we introduce a table, two box plots and a bar plot to learn the Canadian population from the perspective of fertility per household.
+
+After these modelling and analysing, we also introduce model checks and diagnostic checks to judge the hypothesis and modelling from a critical perspective. The modelling convergence is the constraints on variable value based on common sense. The total number of children, the age, the count of respondent could only be positive integers and the monthly cost of children could only be positive rational number. We use Rstudio and Rmarkdown to simulate these models and plots and run model checks and diagnostic checks to see if there are variable values that do not fit the modelling convergence.
+
+
+## Results
+
+```{r}
+data <- read.csv("gss.csv")
+```
+
+```{r}
+ggplot(data=data, aes(age_at_first_birth,total_children)) + 
+  geom_point() + geom_smooth(method = 'lm') +
+  ggtitle('first birth age vs total children','(figure1)')+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+First of all, we plot a scatter diagram(figure 1) to study how total number of children would change in response to the change of age at first birth. From figure 1, When the age at first birth increases, the number of data points that gives birth to 1 or 2 children slightly decreases. However, starting from 3 children, the data points become quite sparse after exceeding beyond 37 years old. Data points for 4, 5, 6, 7 children become sparse when age at first birth arrives 34, 31, 25, 22 respectively. Then we apply a linear model to observations of these two variables and the blue line is the desired linear regression line. 
+
+
+```{r}
+model <- lm(age_at_first_birth ~ total_children, data = data)
+model
+```
+Our regression equation is y =  30.639 - 1.594x.(equation1). 
+
+
+```{r}
+model_2 <- lm(number_marriages~total_children,data=data)
+model_2
+```
+The regression equation is y = 0.4725+0.1943x.
+
+```{r}
+ggplot(data = data,aes(number_marriages,total_children)) + 
+  stat_smooth(method = "lm",se=FALSE,aes(col=sex))+
+  ggtitle('marriage age of difference sex vs total children','(figure2)')+
+  theme(plot.title = element_text(hjust = 0.5))
+```
+
+
+##In figure2, we apply the linear model to study how total number of children would change when the number of marriage varies. We categories the respondents in the dataset into male(represented by blue line) and female(represented by orange line). The slope of male is bigger than that of female and the range of total number of children is 0-7 when number of marriages change from 0 to 4. 
+
+##After applying linear model and plot the linear regression lines for these two groups of variables, we make one table, two box plots and one bar plot to learn the fertility situation more directly and try to link the dataset with the finding of these two linear model.
+
+##The first table is the mean number of children five regions have. The table shows the mean number of children maximises at the Prairie region, which is 1.790 and minimises at British Columbia region, which is 1.595.
+
+
+```{r}
+summa_data <- data %>% group_by(region) %>% summarise(mean_num = mean(total_children, na.rm=T))
+
+kable(summa_data,  caption="mean of region and total children number (table A)", digits=3, format="markdown")
+```
+
+```{r}
+ont_data <- data %>% filter(province == "Ontario" )
+
+ggplot(ont_data, aes(education, total_children))+geom_boxplot() +coord_flip()+
+  ggtitle('education vs total children in Ontario','(figure3)')+
+  theme(plot.title = element_text(hjust = 0.5)) 
+
+```
+
+## After analysing the mean of total children, figure 3 study the relationship between education level and total number of children. Education level is a categorical variable, which divides education into 7 different levels. From the boxplot, the median for every education level is 2 except the University certificate, diploma or degree above has a median of 1. It is noticeable that degree of high school diploma or less than high school diploma has a longer tail towards the right. Also, Bachelor’s degree, College, CEGEP or others and University certificate or diploma below the bachelor’s level have same value of median and upper-quartile range.
+
+
+```{r}
+ggplot(ont_data, aes(number_total_children_intention )) + geom_histogram()+
+  ggtitle('intention of total number children in Ontario','(figure4)')+
+  theme(plot.title = element_text(hjust = 0.5)) 
+```
+
+##Figure 4 is a bar diagram shows the number count of different number of children people hope to have. From the diagram, most people(around 1800) want to have 0 children while only less than 100 people want to have 4 children.
+
+
+
+## Discussion
+
+##In conclusion, we are able to find a negative linear relationship between the age of first birth and total number of children, and a positive linear relationship between number of marriage and total number of children. The linear regression function we get from R for the first said relationship is yi=30.639-1.594x. The pattern was also obvious in the first scatterplot. The points on the x-axis start to become sparse as y values increase, and eventually becomes almost as outliers when y reaches its extremes like 6 or 7 children, while few points on the x-axis appear above the age 26-30. The trend corresponds to our function with a negative slope coefficient -1.594, meaning for every one year increase in age of first birth, the number of children in the family on average decrease for 1.594.
+
+##In figure 2, we can see number of marriages is clearly positively related with total number of children. Although we can tell that for males, the increase of number of children is more intense as his marriage count goes up, gender’s role in this relationship is relatively weak and it’s safe to ignore gender factor in determining the number of children for convenience of calculation. The linear regression function is y=0.4725+0.1943x.
+
+##For the boxplot that links the education level of the parents with total number of children, we find that the two boxes with the longest tail on the right are the ones represent high school diploma and less than high school diploma. This suggests that they both have a right-skewed data distribution. Out of all categories, the median for total number of children given a university degree is the lowest, suggesting that parents who have high level of education tend to have their first child at a later stage of life. 
+
+##Lastly, a survey on the intentional number of children people wish to have was conducted. The results show that majority of people are not interested to have child at all, which partially explains the low population and birth rate in Canada, over the past years.
+
+##In summary, if government wants to raise the Canadian population, there are a few suggestions to be made based on the results of this study. Since parents who give birth to their first child at a young age are the ones that are the most likely to have most children in their lives, the government should implement subsidies to this group of people to help reduce the cost in raising children (intuitively, the costs go up when one chooses to have more children). 
+
+# Weaknesses
+
+##An obvious weakness of our analysis would be the interpretation of the second plot, or the linear relationship between number of marriage and number of children. Although we have enough evidence to say that such positive relationship exists, but we cannot use it to implement policies to help increase birth rate realistically. It does not make sense to increase the x value / number of marriages in hope for an increased y value.
+
+##We were also not able to further make use of the gender element in this relationship, despite noticing a slight pattern for males to have more children when the marriage count goes up.
+
+
+
+# Next Steps
+
+##We can improve our results by including more variables in our analysis. For instance, monthly income for each parent, the level of the children’s education, source of social insurance compensated for households that are not well off, racial or culture backgrounds, etc. Models other than simple linear regression might also be helpful when assessing more than one independent variables at a time. Canada is considered to have relatively high social security among developed countries, with the help of free health care system to improve the overall quality of living for its citizens. However, the birth rate has remained low for many complicated reasons. We must acknowledge the different aspects that caused this problem in order to successfully solve it. 
+
+
+## References
+
+##"Canada Population 2020 (Live)." Canada Population 2020 (Demographics, Maps, Graphs), worldpopulationreview.com/countries/canada-population.
+
+
+##"My.access - University of Toronto Libraries Portal". Web. 20 Oct. 2020，
+
+
+##Russell, Andrew. "Here's Why Canadians Are Having Fewer Children." Global News. Global News, 07 May 2017. Web. 20 Oct. 2020.
+
+
+##p7, General Social Survey, Cycle 31 : Families Public Use Microdata File Documentation and User’s Guide. Rep. Ottawa, 2020. Print.
+
+##p10,7.1， General Social Survey, Cycle 31 : Families Public Use Microdata File Documentation and User’s Guide. Rep. Ottawa, 2020. Print
+
